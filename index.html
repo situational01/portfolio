@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <h1>.Situational.</h1>
+        </div>
+        <nav>
+          <ul class="navlinks">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <!-- hero section -->
+      <section class="hero">
+        <div class="hero-description">
+          <h2>Hi, I am <span>Samuel Otia</span></h2>
+          <p>Front-End Developer | Digital Marketer| Data Analyst</p>
+          <a href="#projects"><button>Projects</button></a>
+          <a href="contact.html"><button>Contact Me</button></a>
+          <a href="https://github.com/situational01"
+            ><i class="ri-github-fill"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/samuel-otia-383386236"
+            ><i class="ri-linkedin-fill"></i
+          ></a>
+        </div>
+        <div class="hero-image">
+          <img src="img/my_photo.png" alt="my photo" />
+        </div>
+      </section>
+      <!-- about me section -->
+      <section class="about" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <div class="about-image">
+            <img src="img/about_me.jpg" alt="about me image" />
+          </div>
+          <div class="about-text">
+            <p>
+              I am Samuel Otia, a passionate Front-End Developer, Digital
+              Marketer, and Data Analyst. With a strong foundation in web
+              development and digital marketing strategies, I create engaging
+              and user-friendly websites that drive results. My expertise in
+              data analysis allows me to make informed decisions and optimize
+              campaigns for maximum impact. I am dedicated to continuous
+              learning and staying updated with the latest industry trends to
+              deliver innovative solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- skills section -->
+      <section class="skills" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+          <div class="skill">
+            <h3>Front-End Development</h3>
+            <ul>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+              <li>React.js</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+          <div class="skill">
+            <h3>Digital Marketing</h3>
+            <ul>
+              <li>SEO</li>
+              <li>Content Marketing</li>
+              <li>Social Media Marketing</li>
+              <li>Email Marketing</li>
+              <li>Google Analytics</li>
+            </ul>
+          </div>
+          <div class="skill">
+            <h3>Data Analysis</h3>
+            <ul>
+              <li>Excel</li>
+              <li>SQL</li>
+              <li>Python (Pandas, NumPy)</li>
+              <li>Tableau</li>
+              <li>Power BI</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- projects section -->
+      <section class="projects" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-container">
+          <div class="project-card">
+            <img src="img/project_1.png" alt="project 1" />
+            <div class="project-info">
+              <h3>Portfolio Website</h3>
+              <p>
+                A personal portfolio website showcasing my skills, projects, and
+                contact information.
+              </p>
+              <a
+                href="https://situational01.github.io/basic-html-css-portfolio/"
+                ><p>Check out the project</p></a
+              >
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="img/project_2.png" alt="project 2" />
+            <div class="project-info">
+              <h3>Movie Review HTML</h3>
+              <p>
+                A movie review website built using HTML, featuring user reviews
+                and ratings.
+              </p>
+              <a href="https://situational01.github.io/movie-review-html-only/"
+                ><p>Check out the project</p></a
+              >
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="img/project_3.jpg" alt="project 3" />
+            <div class="project-info">
+              <h3>Marketing Campaign</h3>
+              <p>
+                A successful digital marketing campaign that increased website
+                traffic by 40%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- contact me section -->
+      <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <form
+          action="mailto:otiasamuelbrian@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+    <!-- footer section -->
+    <footer>2024 &copy; Samuel Otia. All rights reserved.</footer>
+  </body>
+</html>
