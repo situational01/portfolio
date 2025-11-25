@@ -93,6 +93,7 @@ header {
 }
 .hero-description button:hover {
   background-color: var(--secondary-color);
+  transform: scale(1.05);
 }
 .hero-description i {
   font-size: 2rem;
@@ -216,6 +217,12 @@ header {
   height: 200px;
   object-fit: cover;
 }
+.project-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
 .project-card .project-info {
   padding: calc(var(--spacing-unit) * 2);
 }
