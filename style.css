@@ -1550,7 +1550,7 @@ header {
 .sr-only {
   position: absolute !important;
   width: 1px !important;
-
+  height: 1px !important;
   padding: 0 !important;
   margin: -1px !important;
   overflow: hidden !important;
@@ -1585,12 +1585,11 @@ header {
 .nav-toggle .bar {
   display: block;
   width: 22px;
-  height: 2.5px;
-  border-radius: 3px;
-  background: var(--primary-color);
-  transition: all 320ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 160ms ease;
   transform-origin: center;
-  position: absolute;
 }
 .nav-toggle .bar + .bar {
   margin-top: 5px;
@@ -1598,27 +1597,25 @@ header {
 
 /* open -> X */
 .nav-toggle[aria-expanded="true"] .bar-top {
-  transform: rotate(45deg);
-  top: 22px;
+  transform: translateY(6px) rotate(45deg);
 }
 .nav-toggle[aria-expanded="true"] .bar-middle {
   opacity: 0;
-  transform: scaleX(0) rotate(45deg);
+  transform: scaleX(0.6);
 }
 .nav-toggle[aria-expanded="true"] .bar-bottom {
-  transform: rotate(-45deg);
-  top: 22px;
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* overlay that dims page (JS toggles .show) */
 .nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.45);
   opacity: 0;
   visibility: hidden;
-  transition: all 260ms ease;
-  z-index: 1240;
+  transition: opacity 220ms ease, visibility 220ms ease;
+  z-index: 1000;
   pointer-events: none;
 }
 .nav-overlay.show {
@@ -1681,316 +1678,73 @@ header {
     padding: 84px 18px 24px;
     background: linear-gradient(
       180deg,
-      rgba(6, 10, 16, 0.99),
-      rgba(8, 14, 24, 0.99)
+      rgba(6, 10, 16, 0.98),
+      rgba(8, 14, 24, 0.98)
     );
-    border-left: 2px solid rgba(52, 152, 219, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.03);
     transform: translateX(110%);
-    transition: transform 380ms cubic-bezier(0.2, 0.9, 0.2, 1);
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6);
-    z-index: 1245;
+    transition: transform 320ms cubic-bezier(0.2, 0.9, 0.2, 1);
+    box-shadow: -18px 0 48px rgba(2, 6, 23, 0.55);
+    z-index: 1210; /* above overlay */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     pointer-events: auto;
-    list-style: none;
-    display: flex !important;
-    flex-direction: column;
-    gap: 8px;
-    flex-wrap: nowrap;
   }
 
   .navlinks.open {
     transform: translateX(0);
   }
 
-  /* nav links */
+  /* links: large, white and tappable */
   .navlinks li {
     width: 100%;
-    margin: 0 !important;
+    margin-bottom: 6px;
   }
-
   .navlinks a {
     display: block;
-    padding: 14px 16px;
+    width: 100%;
+    padding: 14px 12px;
     color: #ffffff;
-    font-size: 1.08rem;
     font-weight: 700;
+    font-size: 1.05rem;
     text-decoration: none;
-    border-radius: 10px;
-    transition: all 200ms ease;
-    border-left: 3px solid transparent;
+    border-radius: 8px;
+    letter-spacing: 0.2px;
   }
-
   .navlinks a:hover,
   .navlinks a:focus {
-    background: rgba(52, 152, 219, 0.12);
+    background: rgba(255, 255, 255, 0.04);
     color: #fff;
-    border-left-color: var(--primary-color);
-    padding-left: 20px;
+    transform: translateX(4px);
     outline: none;
   }
 
-  /* header positioning */
-  header {
-    z-index: 1200;
+  /* ensure header sits beneath the menu */
+  header,
+  .header-container {
     position: relative;
-  }
-
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0; /* remove gap between logo and hamburger */
-    padding: calc(var(--spacing-unit) * 1);
-  }
-
-  .logo {
-    flex: 1;
-    text-align: left;
-  }
-
-  .nav-toggle {
-    order: 2;
-    flex-shrink: 0;
+    z-index: 1190;
   }
 }
 
-/* Desktop header remains unchanged */
-@media (min-width: 769px) {
-  .header-container {
-    align-items: center;
-    justify-content: center;
-    gap: 260px;
-    display: flex;
-    padding: calc(var(--spacing-unit) * 2);
-  }
-}
-
-/* PROFESSIONAL HAMBURGER: dashes stacked on top of each other */
-
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-/* HIDE on desktop (default) */
-.nav-toggle {
-  display: none;
-}
-
-/* SHOW ONLY on small screens with stacked dashes */
+/* small-screen hero: make CTAs visible and hero image hidden */
 @media (max-width: 768px) {
-  .nav-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: rgba(52, 152, 219, 0.08);
-    border: 2px solid rgba(52, 152, 219, 0.3);
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
-    z-index: 1250;
-    transition: all 260ms cubic-bezier(0.2, 0.9, 0.2, 1);
-    flex-shrink: 0;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .nav-toggle:hover {
-    background: rgba(52, 152, 219, 0.15);
-    border-color: rgba(52, 152, 219, 0.5);
-    transform: scale(1.05);
-  }
-
-  .nav-toggle:focus {
-    outline: 3px solid rgba(52, 152, 219, 0.2);
-    outline-offset: 3px;
-  }
-
-  /* three stacked bars (overlapping) */
-  .nav-toggle .bar {
-    display: block;
-    width: 24px;
-    height: 2.5px;
-    background: var(--primary-color);
-    border-radius: 3px;
-    transition: all 320ms cubic-bezier(0.2, 0.9, 0.2, 1);
-    transform-origin: center;
-    position: absolute;
-  }
-  .nav-toggle .bar-top {
-    top: 14px;
-  }
-
-  .nav-toggle .bar-middle {
-    top: 22px;
-  }
-
-  .nav-toggle .bar-bottom {
-    top: 30px;
-  }
-
-  /* hamburger open -> X transformation (dashes rotate in place) */
-  .nav-toggle[aria-expanded="true"] .bar-top {
-    transform: rotate(45deg);
-    top: 22px;
-  }
-
-  .nav-toggle[aria-expanded="true"] .bar-middle {
-    opacity: 0;
-    transform: scaleX(0) rotate(45deg);
-  }
-
-  .nav-toggle[aria-expanded="true"] .bar-bottom {
-    transform: rotate(-45deg);
-    top: 22px;
-  }
-
-  /* overlay */
-  .nav-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
+  .hero-image {
+    display: none !important;
     visibility: hidden;
-    transition: all 260ms ease;
-    z-index: 1240;
-    pointer-events: none;
   }
-
-  .nav-overlay.show {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
+  /* ensure mobile CTAs in hero are visible if used */
+  .hero-cta-desktop {
+    display: none !important;
   }
-
-  /* slide-in nav panel */
-  .navlinks {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 280px;
-    max-width: 85vw;
-    padding: 90px 24px 24px;
-    background: linear-gradient(
-      180deg,
-      rgba(6, 10, 16, 0.99),
-      rgba(8, 14, 24, 0.99)
-    );
-    border-left: 2px solid rgba(52, 152, 219, 0.15);
-    transform: translateX(110%);
-    transition: transform 380ms cubic-bezier(0.2, 0.9, 0.2, 1);
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6);
-    z-index: 1245;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    pointer-events: auto;
-    list-style: none;
+  .hero-cta-mobile {
     display: flex !important;
     flex-direction: column;
-    gap: 8px;
-    flex-wrap: nowrap;
-  }
-
-  .navlinks.open {
-    transform: translateX(0);
-  }
-
-  /* nav links */
-  .navlinks li {
+    gap: 10px;
     width: 100%;
-    margin: 0 !important;
   }
-
-  .navlinks a {
-    display: block;
-    padding: 14px 16px;
-    color: #ffffff;
-    font-size: 1.08rem;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: all 200ms ease;
-    border-left: 3px solid transparent;
-  }
-
-  .navlinks a:hover,
-  .navlinks a:focus {
-    background: rgba(52, 152, 219, 0.12);
-    color: #fff;
-    border-left-color: var(--primary-color);
-    padding-left: 20px;
-    outline: none;
-  }
-
-  /* header positioning */
-  header {
-    z-index: 1200;
-    position: relative;
-  }
-
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0; /* remove gap between logo and hamburger */
-    padding: calc(var(--spacing-unit) * 1);
-  }
-
-  .logo {
-    flex: 1;
-    text-align: left;
-  }
-
-  .nav-toggle {
-    order: 2;
-    flex-shrink: 0;
-  }
-}
-
-/* Desktop: keep your existing nav styling */
-@media (min-width: 769px) {
-  .nav-toggle {
-    display: none !important;
-  }
-  .nav-overlay {
-    display: none !important;
-  }
-
-  .navlinks {
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 0 !important;
-    background: none !important;
-    transform: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    display: flex !important;
-    flex-direction: row !important;
-    gap: calc(var(--spacing-unit) * 4) !important;
-    /* your original desktop nav styles apply here */
-  }
-
-  .navlinks li {
-    margin: 0 !important;
-  }
-
-  .navlinks a {
-    border: none !important;
-    border-left: none !important;
-    padding: 0 !important;
+  .hero-description {
+    text-align: center;
   }
 }
 
