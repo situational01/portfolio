@@ -22,8 +22,24 @@
         <div class="logo">
           <h1>.Situational.</h1>
         </div>
+
+        <!-- hamburger / nav toggle (small screens) -->
+        <button
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          type="button"
+        >
+          <span class="bar bar-top"></span>
+          <span class="bar bar-middle"></span>
+          <span class="bar bar-bottom"></span>
+        </button>
+
+        <!-- quick mobile CTAs (visible only on small screens via CSS) -->
+
         <nav>
-          <ul class="navlinks">
+          <ul class="navlinks" id="primary-nav">
             <li><a href="#about">About Me</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -34,24 +50,47 @@
     </header>
     <main>
       <!-- hero section -->
-      <section class="hero">
+      <section class="hero" id="home">
         <div class="hero-description">
-          <h2>Hi, I am <span>Samuel Otia</span></h2>
-          <p>Front-End Developer | Digital Marketer| Data Analyst</p>
-          <a href="#projects"><button>Projects</button></a>
-          <a href="#contact"><button>Contact Me</button></a>
-          <a href="https://github.com/situational01"
-            ><i class="ri-github-fill"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/samuel-otia-383386236"
-            ><i class="ri-linkedin-fill"></i
-          ></a>
+          <h2>Hi, I'm <span>Samuel Otia</span></h2>
+          <p>Front-End Developer | Digital Marketer | Data Analyst</p>
+
+          <!-- Desktop CTAs -->
+          <div class="hero-cta hero-cta-desktop">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+          </div>
+
+          <!-- Mobile CTAs: Download CV + Contact Me -->
+          <div class="hero-cta hero-cta-mobile">
+            <a class="btn btn-primary" href="Samuel_Otia_CV.pdf" download>
+              <i class="ri-download-cloud-line"></i> Download CV
+            </a>
+            <a class="btn btn-secondary" href="#contact">
+              <i class="ri-mail-line"></i> Contact Me
+            </a>
+          </div>
+
+          <!-- Social links -->
+          <div class="hero-socials">
+            <a href="https://github.com/situational01" aria-label="GitHub">
+              <i class="ri-github-fill"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/samuel-otia-383386236"
+              aria-label="LinkedIn"
+            >
+              <i class="ri-linkedin-fill"></i>
+            </a>
+          </div>
         </div>
+
         <div class="hero-image">
-          <img src="img/my_photo.png" alt="my photo" />
+          <img src="img/my_photo.png" alt="Samuel Otia" class="profile-img" />
         </div>
       </section>
-      <!-- about me section -->
+
+      <!-- about section -->
       <section class="about" id="about">
         <h2>About Me</h2>
         <div class="about-content">
@@ -72,12 +111,13 @@
           </div>
         </div>
       </section>
+
       <!-- skills section -->
       <section class="skills" id="skills">
         <h2>Skills</h2>
         <div class="skills-container">
           <div class="skill">
-            <h3>Front-End Development</h3>
+            <h3><i class="ri-code-line"></i> Front-End Development</h3>
             <ul>
               <li>HTML5</li>
               <li>CSS3</li>
@@ -87,7 +127,7 @@
             </ul>
           </div>
           <div class="skill">
-            <h3>Digital Marketing</h3>
+            <h3><i class="ri-megaphone-line"></i> Digital Marketing</h3>
             <ul>
               <li>SEO</li>
               <li>Content Marketing</li>
@@ -97,7 +137,7 @@
             </ul>
           </div>
           <div class="skill">
-            <h3>Data Analysis</h3>
+            <h3><i class="ri-database-2-line"></i> Data Analysis</h3>
             <ul>
               <li>Excel</li>
               <li>SQL</li>
@@ -108,71 +148,318 @@
           </div>
         </div>
       </section>
+
       <!-- projects section -->
       <section class="projects" id="projects">
         <h2>Projects</h2>
         <div class="projects-container">
-          <div class="project-card">
-            <img src="img/project_1.png" alt="project 1" />
-            <div class="project-info">
-              <h3>Portfolio Website</h3>
-              <p>
-                A personal portfolio website showcasing my skills, projects, and
-                contact information.
-              </p>
-              <a
-                href="https://situational01.github.io/basic-html-css-portfolio/"
-                ><p>Check out the project</p></a
-              >
+          <article class="project-card" aria-labelledby="p1-title">
+            <figure class="project-media">
+              <img
+                class="project-img lazy"
+                data-src="img/project_1.png"
+                src="img/project_1.png"
+                alt="Portfolio Website screenshot"
+              />
+              <figcaption class="project-overlay" aria-hidden="true">
+                <div class="project-meta">
+                  <span class="project-badge">Featured</span>
+                  <h3 id="p1-title">Portfolio Website</h3>
+                  <p class="project-desc">
+                    Personal portfolio showcasing skills, projects and contact
+                    details — built with semantic HTML & responsive CSS.
+                  </p>
+                  <div class="project-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Responsive</span>
+                  </div>
+                </div>
+                <div class="project-actions">
+                  <a
+                    class="btn btn-ghost"
+                    href="https://situational01.github.io/basic-html-css-portfolio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Portfolio live"
+                  >
+                    <i class="ri-external-link-line"></i> Live
+                  </a>
+                  <a
+                    class="btn btn-ghost"
+                    href="https://github.com/situational01/basic-html-css-portfolio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Portfolio code"
+                  >
+                    <i class="ri-github-fill"></i> Code
+                  </a>
+                </div>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project-card" aria-labelledby="p2-title">
+            <figure class="project-media">
+              <img
+                class="project-img lazy"
+                data-src="img/project_2.png"
+                src="img/project_2.png"
+                alt="Movie Review website screenshot"
+              />
+              <figcaption class="project-overlay" aria-hidden="true">
+                <div class="project-meta">
+                  <h3 id="p2-title">Movie Review HTML</h3>
+                  <p class="project-desc">
+                    Static movie review site focused on clean layout and
+                    typographic hierarchy for content-driven UX.
+                  </p>
+                  <div class="project-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">Accessibility</span>
+                  </div>
+                </div>
+                <div class="project-actions">
+                  <a
+                    class="btn btn-ghost"
+                    href="https://situational01.github.io/movie-review-html-only/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Movie Review live"
+                  >
+                    <i class="ri-external-link-line"></i> Live
+                  </a>
+                  <a
+                    class="btn btn-ghost"
+                    href="https://github.com/situational01/movie-review-html-only"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Movie Review code"
+                  >
+                    <i class="ri-github-fill"></i> Code
+                  </a>
+                </div>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project-card" aria-labelledby="p3-title">
+            <figure class="project-media">
+              <img
+                class="project-img lazy"
+                data-src="img/project_3.jpg"
+                src="img/project_3.jpg"
+                alt="Marketing campaign highlight"
+              />
+              <figcaption class="project-overlay" aria-hidden="true">
+                <div class="project-meta">
+                  <h3 id="p3-title">Marketing Campaign</h3>
+                  <p class="project-desc">
+                    A campaign that increased website traffic by 40% — strategy,
+                    creatives and performance tracking.
+                  </p>
+                  <div class="project-tags">
+                    <span class="tag">SEO</span>
+                    <span class="tag">Analytics</span>
+                    <span class="tag">Conversion</span>
+                  </div>
+                </div>
+                <div class="project-actions">
+                  <a
+                    class="btn btn-ghost"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Marketing case study"
+                  >
+                    <i class="ri-file-list-3-line"></i> Case Study
+                  </a>
+                </div>
+              </figcaption>
+            </figure>
+          </article>
+        </div>
+      </section>
+
+      <!-- contact section -->
+      <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <p class="contact-intro">
+          I'm always open to new opportunities and interesting projects. Feel
+          free to reach out!
+        </p>
+
+        <div class="contact-wrapper">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                required
+              />
             </div>
-          </div>
-          <div class="project-card">
-            <img src="img/project_2.png" alt="project 2" />
-            <div class="project-info">
-              <h3>Movie Review HTML</h3>
-              <p>
-                A movie review website built using HTML, featuring user reviews
-                and ratings.
-              </p>
-              <a href="https://situational01.github.io/movie-review-html-only/"
-                ><p>Check out the project</p></a
-              >
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
             </div>
-          </div>
-          <div class="project-card">
-            <img src="img/project_3.jpg" alt="project 3" />
-            <div class="project-info">
-              <h3>Marketing Campaign</h3>
-              <p>
-                A successful digital marketing campaign that increased website
-                traffic by 40%.
-              </p>
+
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Project inquiry, job opportunity, etc."
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Tell me about your project or opportunity..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <span><i class="ri-send-plane-fill"></i> Send Message</span>
+            </button>
+            <p class="form-note">I'll get back to you within 24-48 hours.</p>
+          </form>
+
+          <div class="contact-info">
+            <h3>Other Ways to Reach Me</h3>
+
+            <div class="contact-item">
+              <i class="ri-mail-line"></i>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:otiasamuelbrian@gmail.com"
+                  >otiasamuelbrian@gmail.com</a
+                >
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <i class="ri-phone-line"></i>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+254708614269">+(254)708-614-269</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <i class="ri-map-pin-line"></i>
+              <div>
+                <h4>Location</h4>
+                <p>Nairobi, Kenya</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <i class="ri-links-line"></i>
+              <div>
+                <h4>Connect With Me</h4>
+                <div class="contact-socials">
+                  <a
+                    href="https://github.com/situational01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <i class="ri-github-fill"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/samuel-otia-383386236"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <i class="ri-linkedin-fill"></i>
+                  </a>
+                  <a href="mailto:otiasamuelbrian@gmail.com" aria-label="Email">
+                    <i class="ri-mail-fill"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- contact me section -->
-      <section class="contact" id="contact">
-        <h2>Contact Me</h2>
-        <form
-          action="mailto:otiasamuelbrian@gmail.com"
-          method="post"
-          enctype="text/plain"
-        >
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <button type="submit">Send Message</button>
-        </form>
-      </section>
     </main>
     <!-- footer section -->
-    <footer>2024 &copy; Samuel Otia. All rights reserved.</footer>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>.Situational.</h3>
+          <p class="footer-tagline">
+            Front‑End Developer • Digital Marketer • Data Analyst
+          </p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="footer-contact" aria-label="Contact information">
+          <a href="mailto:otiasamuelbrian@gmail.com"
+            >otiasamuelbrian@gmail.com</a
+          >
+          <a href="tel:+254708614269" class="phone">+(254) 708‑614-269</a>
+
+          <div class="footer-socials" aria-label="Social links">
+            <a
+              href="https://github.com/situational01"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              ><i class="ri-github-fill"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/samuel-otia-383386236"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              ><i class="ri-linkedin-fill"></i
+            ></a>
+            <a href="mailto:otiasamuelbrian@gmail.com" aria-label="Email"
+              ><i class="ri-mail-fill"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-legal">
+          <span>© 2025 Samuel Otia. All rights reserved.</span>
+          <span class="footer-policy">
+            • <a href="#" aria-label="Privacy policy">Privacy</a> •
+            <a href="#" aria-label="Terms of use">Terms</a></span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- back to top button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+      <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <script src="script.js"></script>
   </body>
 </html>
